@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/name/Desktop/Devops/project'
+swag init -g api/api.go -o api/docs
+make: Leaving directory '/home/name/Desktop/Devops/project'
+ 

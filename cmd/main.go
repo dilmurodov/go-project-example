@@ -21,15 +21,15 @@ func main() {
 		log.Panic("!!!Error while connecting to Postgres", logger.Error(err))
 	}
 	defer pgStore.CloseDB()
-	log.Info("!!!Successfully connected to DB", logger.Any("port", cfg.PostgresPort))
-
+	
 	h := handlers.NewHandler(cfg, log, pgStore)
 	r := api.SetUpRouter(h, cfg)
-
+	
+	log.Info("!!!HTTP: Server Being started...", logger.Any("port", cfg.ServerPort))
+	log.Info("!!!Successfully connected to DB", logger.Any("port", cfg.PostgresPort))
 	err = r.Run(cfg.ServerPort)
 	if err != nil{
 		log.Error("!!!HTTP: Error server failed", logger.Error(err))
 		return
 	}
-	log.Info("!!!HTTP: Server Being started...", logger.Any("port", cfg.ServerPort))
 }
