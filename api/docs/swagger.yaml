@@ -30,6 +30,13 @@ paths:
       - application/json
       description: Add user data
       operationId: create user
+      parameters:
+      - description: CreateUserRequestBody
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/storage.User'
       produces:
       - application/json
       responses:

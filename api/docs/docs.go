@@ -31,6 +31,17 @@ const docTemplate = `{
                 ],
                 "summary": "Add user",
                 "operationId": "create user",
+                "parameters": [
+                    {
+                        "description": "CreateUserRequestBody",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/storage.User"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "user",

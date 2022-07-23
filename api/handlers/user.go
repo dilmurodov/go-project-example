@@ -15,6 +15,7 @@ import (
 // @Tags         users
 // @Accept       json
 // @Produce      json
+// @Param user body storage.User true "CreateUserRequestBody"
 // @Success      200  {object}  http.Response{data=storage.User}  "user"
 // @Response     400  {object}  http.Response{data=string}        "Invalid Argument"
 // @Failure      500  {object}  http.Response{data=string}        "Server Error"

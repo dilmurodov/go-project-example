@@ -2,8 +2,11 @@ package postgres
 
 import (
 	"context"
+	"database/sql"
+	"strconv"
 
 	"project/storage"
+
 	"github.com/jackc/pgx/v4/pgxpool"
 )
 
@@ -19,7 +22,7 @@ func NewUserRepo (db *pgxpool.Pool) *UserRepo {
 
 func (u *UserRepo) Create(ctx context.Context, user *storage.User) (id string, err error) {
 
-	query := `INSERT INTO users (name, age) VALUES($1, $2)`
+	query := `INSERT INTO user_data (name, age) VALUES($1, $2) returning user_id`
 
 	err = u.db.QueryRow(ctx, query, user.Name, user.Age).Scan(&id)
 	if err != nil{
@@ -31,15 +34,22 @@ func (u *UserRepo) Create(ctx context.Context, user *storage.User) (id string, e
 
 func (u *UserRepo) Get(ctx context.Context, id string) (user *storage.User, err error) {
 
-	query := `SELECT name, age FROM users WHERE id = $1`
+	var int_id sql.NullInt32
+
+	query := `SELECT id, name, age FROM user_data WHERE user_id = $1`
 	user = &storage.User{}
 	err = u.db.QueryRow(ctx, query, id).Scan(
-		user.Name,
-		user.Age,
+		&int_id,
+		&user.Name,
+		&user.Age,
 	)
 	if err != nil{
 		return nil, err
 	}
 
-	return nil, err
+	if int_id.Valid{
+		user.Id = strconv.Itoa(int(int_id.Int32))
+	}
+
+	return user, nil
 }

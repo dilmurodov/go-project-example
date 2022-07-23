@@ -1,5 +1,5 @@
 
-INSERT INTO user_data (id, name, age) VALUES
-                                (1, 'Tolib', 19),
-                                (2, 'Anvar', 13),
-                                (3, 'Otabek', 24);
+INSERT INTO user_data (name, age) VALUES
+                                ('Tolib', 19),
+                                ('Anvar', 13),
+                                ('Otabek', 24);
