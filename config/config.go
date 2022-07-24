@@ -30,7 +30,7 @@ func Load() Config {
 	config.PostgresDatabase = cast.ToString(getOrReturnDefaultValue("POSTGRESS_DATABASE", "project_db"))
 	config.PostgresPassword = cast.ToString(getOrReturnDefaultValue("POSTGRESS_PASSWORD", "admin"))
 	config.PostgresPort = cast.ToInt(getOrReturnDefaultValue("POSTGRESS_PORT", 5432))
-	config.PostgresHost = cast.ToString(getOrReturnDefaultValue("POSTGRESS_HOST", "localhost"))
+	config.PostgresHost = cast.ToString(getOrReturnDefaultValue("POSTGRESS_HOST", "0.0.0.0"))
 	config.PostgresUser = cast.ToString(getOrReturnDefaultValue("POSTGRESS_USER", "postgres"))
 	config.PostgresMaxConnections = cast.ToInt(getOrReturnDefaultValue("POSTGRESS_MAX_CONNECTIONS", 10))
 	config.ServerPort = cast.ToString(getOrReturnDefaultValue("SERVER_PORT", ":5000"))

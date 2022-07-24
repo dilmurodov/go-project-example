@@ -8,6 +8,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/spf13/cast v1.5.0
 	github.com/streamingfast/logging v0.0.0-20220511154537-ce373d264338
+	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
 	github.com/swaggo/gin-swagger v1.5.1
 	github.com/swaggo/swag v1.8.4
 	go.uber.org/zap v1.21.0

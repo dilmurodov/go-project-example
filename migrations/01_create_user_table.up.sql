@@ -1,3 +1,5 @@
+CREATE DATABASE project_db;
+
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE IF NOT EXISTS user_data

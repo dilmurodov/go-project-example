@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  postgres-server:
+    restart: always
+    image: postgres
+    volumes:
+      - ./migrations:/var/lib/postgresql/data
+    ports:
+      - "5431:5432"
+    environment:
+      - POSTGRESS_PASSWORD="admin"
+  go-app:
+    build: .
+    depends_on:
+      - postgres-server
+    ports:
+      - "5000:5000"
+    environment:
+      - POSTGRESS_PASSWORD=admin
+      - POSTGRESS_HOST=postgres-server
+      - POSTGRESS_PORT=5432
+      - POSTGRESS_USER=postgres
+      - POSTGRESS_DATABASE=project_db
