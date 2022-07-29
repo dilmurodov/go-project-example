@@ -32,6 +32,9 @@ type LoggerI interface {
 	Fatal(msg string, fields ...Field)
 }
 
+// jkskjfdnsjdfnjsdnfjsndfjsdnfjnsdjf
+// sjdfnsjdnfjsdnf
+
 type loggerImpl struct {
 	zap *zap.Logger
 }

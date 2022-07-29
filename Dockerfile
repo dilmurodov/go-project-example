@@ -1,5 +1,5 @@
 # install base image
-FROM golang:1.18-alpine
+FROM golang:1.18-alpine as builder
 
 # install dependencies
 
