@@ -15,14 +15,16 @@ services:
     build: .
     depends_on:
       - postgres-server
+    expose:
+      - 5000
     ports:
-      - "5000:5000"
+      - 5000:5000
     environment:
       - POSTGRESS_PASSWORD=admin
       - POSTGRESS_HOST=postgres-server
       - POSTGRESS_PORT=5432
       - POSTGRESS_USER=postgres
-      - POSTGRESS_DATABASE=project_db
+      - POSTGRESS_DATABASE=pb_project
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -33,5 +35,11 @@ services:
     ports:
       - "5050:80"
     restart: always
+  nginx:
+    build: ./nginx
+    depends_on:
+      - "go-app"
+    ports:
+      - "80:80"
 volumes:
   migrations:
