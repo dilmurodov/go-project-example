@@ -23,6 +23,10 @@ func SetUpRouter(h *handlers.Handler, cfg config.Config) (r *gin.Engine) {
 
 	r.Use(gin.Recovery(), gin.Logger())
 
+	// auth
+	r.POST("/auth/standart/login", h.Login)
+	r.POST("/auth/logout", h.Logout)
+
 	r.POST("/user", h.CreateUser)
 	r.GET("/user/:id", h.GetUser)
 

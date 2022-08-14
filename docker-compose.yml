@@ -10,7 +10,8 @@ services:
       - "5431:5432"
     environment:
       - POSTGRESS_PASSWORD=admin
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRESS_HOST_AUTH_METHOD=trust
+      - POSTGRESS_DATABASE=pb_project
   go-app:
     build: .
     depends_on:

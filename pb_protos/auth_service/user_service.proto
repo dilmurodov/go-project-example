@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package genproto;
+option go_package="genproto/auth_service";
+
+import "user.proto";
+
+service UserService {
+    rpc RegisterUser(UserRegisterReq) returns (UserRegisterResp) {}
+}
