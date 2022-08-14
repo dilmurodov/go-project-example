@@ -1,5 +1,5 @@
 FROM nginx
 
-EXPOSE 80
+EXPOSE 8080
 
 COPY nginx.conf /etc/nginx/nginx.conf

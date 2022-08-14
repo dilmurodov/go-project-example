@@ -4,14 +4,13 @@ services:
   postgres-server:
     restart: always
     image: postgres
-    volumes:
-      - ./migrations:/var/lib/postgresql/data
     ports:
       - "5431:5432"
     environment:
-      - POSTGRESS_PASSWORD=admin
+      - POSTGRES_PASSWORD=admin
       - POSTGRES_HOST_AUTH_METHOD=trust
-      - POSTGRESS_DATABASE=pb_project
+      - POSTGRES_DB=pb_project
+      - POSTGRES_USER=postgres
   go-app:
     build: .
     depends_on:
@@ -21,11 +20,13 @@ services:
     ports:
       - 5000:5000
     environment:
-      - POSTGRESS_PASSWORD=admin
-      - POSTGRESS_HOST=postgres-server
-      - POSTGRESS_PORT=5432
-      - POSTGRESS_USER=postgres
-      - POSTGRESS_DATABASE=pb_project
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_HOST=postgres-server
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=pb_project
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -41,6 +42,6 @@ services:
     depends_on:
       - "go-app"
     ports:
-      - "80:80"
+      - "8080:8080"
 volumes:
-  migrations:
+  db:
