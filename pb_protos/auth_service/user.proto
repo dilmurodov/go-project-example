@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package genproto;
+option go_package="genproto/auth_service";
+
+message UserRegisterReq {
+    string client_type_id = 1;
+    string role_id = 2;
+    string password = 3;
+    string phone = 4;
+    string email = 5;
+    string login = 6; 
+}
+
+message UserRegisterResp {
+    string user_id = 1;
+    string passcode_token = 2;
+}

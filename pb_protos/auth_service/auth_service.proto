@@ -1,0 +1,10 @@
+syntax="proto3";
+
+package genproto;
+option go_package="genproto/auth_service";
+
+import "auth.proto";
+
+service AuthService {
+    rpc GetAccess(GetAccessReq) returns (GetAccessResp) {};
+}

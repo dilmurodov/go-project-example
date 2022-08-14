@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/auth_service";
+
+message GetAccessReq {
+    string access_token = 1;
+    string method = 2;
+    string url = 3;
+    string platform_id = 4;
+    string client_type_id = 5;
+}
+
+message GetAccessResp {
+    string id = 1;
+}
